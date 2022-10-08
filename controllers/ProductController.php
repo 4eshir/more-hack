@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Achievment;
 use app\models\CurrencyWallet;
+use app\models\extended\APIConnector;
 use app\models\HistoryWallet;
 use app\models\Product;
 use app\models\ProductUser;
@@ -83,11 +84,14 @@ class ProductController extends Controller
             ->andWhere(['currency_id' => $currency_id])->one();
         $wallet_out = CurrencyWallet::find()->joinWith(['wallet wallet'])->where(['wallet.user_id' => $user_id_buy])->andWhere(['wallet.type_id' => 1])
             ->andWhere(['currency_id' => $currency_id])->one();
+        $api = new APIConnector();
 
         if ($operation_id == 3)
         {
             if ($wallet_out->count >= $price)
             {
+                $api->ExchangeCoins($price*(-1), $wallet_out->wallet->privateKey, $wallet_out->wallet->publicKey, $wallet_in->wallet->publicKey, $currency_id);
+
                 $wallet_out->count = $wallet_out->count - $price;
                 $wallet_out->save();
             }
@@ -96,11 +100,15 @@ class ProductController extends Controller
         }
         if ($operation_id == 7)
         {
+            $api->ExchangeCoins($price, $wallet_out->wallet->privateKey, $wallet_out->wallet->publicKey, $wallet_in->wallet->publicKey, $currency_id);
+
             $wallet_out->count = $wallet_out->count + $price;
             $wallet_out->save();
         }
         if ($operation_id == 8 && !empty($wallet_in))
         {
+            $api->ExchangeCoins($price, $wallet_out->wallet->privateKey, $wallet_out->wallet->publicKey, $wallet_in->wallet->publicKey, $currency_id);
+
             $wallet_in->count = $wallet_in->count + $price;
             $wallet_in->save();
         }
