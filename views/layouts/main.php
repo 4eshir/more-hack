@@ -30,7 +30,25 @@ AppAsset::register($this);
     <?php
     $user = app\models\User::find()->where(['username' => Yii::$app->user->identity->username])->one();
 
-    if ($user->role_id == 1)
+    if (Yii::$app->user->identity == null)
+    {
+        NavBar::begin([
+            'brandLabel' => 'ВТБ'/*Yii::$app->name*/,
+            'brandUrl' => Yii::$app->homeUrl,
+            'options' => [
+                'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
+            ],
+        ]);
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav'],
+            'items' => [
+                ['label' => 'Войти', 'url' => ['/site/login']],
+            ]
+        ]);
+        NavBar::end(); 
+    }
+
+    else if ($user->role_id == 1)
     {
        NavBar::begin([
             'brandLabel' => 'ВТБ'/*Yii::$app->name*/,
