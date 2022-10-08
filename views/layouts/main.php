@@ -50,6 +50,7 @@ AppAsset::register($this);
                 ) : (
                     '<li class="dropdown nav-item"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown" aria-expanded="false">Мой профиль ('.Yii::$app->user->identity->username.')</a><div id="w2" class="dropdown-menu">'
                     .'<a class="dropdown-item" href="'.Url::to(['/lk/index', 'id' => Yii::$app->user->identity->getId()]).'">Личный кабинет</a>'
+                    .'<a class="dropdown-item" href="'.Url::to(['/lk/chat', 'id' => Yii::$app->user->identity->getId()]).'">Чаты</a>'
                     .'<a class="dropdown-item" href="'.Url::to(['/site/logout', 'from' => '1']).'">Выйти</a></div></li>'
                     .'</li>'
                     
@@ -79,6 +80,7 @@ AppAsset::register($this);
                 ) : (
                     '<li class="dropdown nav-item"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown" aria-expanded="false">Мой профиль ('.Yii::$app->user->identity->username.')</a><div id="w2" class="dropdown-menu">'
                     .'<a class="dropdown-item" href="'.Url::to(['/lk/index', 'id' => Yii::$app->user->identity->getId()]).'">Личный кабинет</a>'
+                    .'<a class="dropdown-item" href="'.Url::to(['/lk/chat', 'id' => Yii::$app->user->identity->getId()]).'">Чаты</a>'
                     .'<a class="dropdown-item" href="'.Url::to(['/site/logout', 'from' => '1']).'">Выйти</a></div></li>'
                     .'</li>'
                     
