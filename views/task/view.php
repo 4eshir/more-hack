@@ -16,14 +16,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?php if (Yii::$app->user->identity->getId() == $model->user_creator_id) {
+            echo Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
+            echo Html::a('Удалить', ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data' => [
+                    'confirm' => 'Are you sure you want to delete this item?',
+                    'method' => 'post',
+                ],
+            ]); 
+        } ?>
         <?php 
 
         $joins = app\models\TaskUser::find()->where(['user_id' => Yii::$app->user->identity->getId()])->andWhere(['task_id' => $model->id])->orderBy(['id' => SORT_DESC])->all();
@@ -57,13 +59,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'name',
-            'currency_id',
+            'currencyString',
             'price',
-            'repeat',
-            'user_creator_id',
-            'status_id',
+            'repeatString',
+            ['attribute' => 'creatorString', 'format' => 'raw'],
+            'statusString',
             'date_start',
             'date_finish',
         ],

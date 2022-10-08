@@ -56,14 +56,20 @@ class Task extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'currency_id' => 'Currency ID',
-            'price' => 'Price',
-            'repeat' => 'Repeat',
-            'user_creator_id' => 'User Creator ID',
-            'status_id' => 'Status ID',
-            'date_start' => 'Date Start',
-            'date_finish' => 'Date Finish',
+            'name' => 'Название проекта',
+            'currency_id' => 'Валюта для выплаты участникам',
+            'currencyString' => 'Валюта для выплаты участникам',
+            'price' => 'Сумма вознаграждения',
+            'repeat' => 'Возможность повторного выполнения',
+            'repeatString' => 'Возможность повторного выполнения',
+            'user_creator_id' => 'Создатель проекта',
+            'creatorString' => 'Создатель проекта',
+            'status_id' => 'Статус проекта',
+            'statusString' => 'Статус проекта',
+            'date_start' => 'Дата начала',
+            'date_finish' => 'Дата окончания',
+            'joiners' => 'Выполняют задание',
+            'completed' => 'Выполнили задание',
         ];
     }
 
@@ -105,6 +111,26 @@ class Task extends \yii\db\ActiveRecord
     public function getUserCreator()
     {
         return $this->hasOne(User::class, ['id' => 'user_creator_id']);
+    }
+
+    public function getCurrencyString()
+    {
+        return $this->currency->name;
+    }
+
+    public function getRepeatString()
+    {
+        return $this->repeat == 1 ? 'Присутствует' : 'Отсутствует';
+    }
+
+    public function getStatusString()
+    {
+        return $this->status_id == 1 ? 'Открыта' : 'Завершена';
+    }
+
+    public function getCreatorString()
+    {
+        return Html::a($this->userCreator->fullName, \yii\helpers\Url::to(['user/view', 'id' => $this->user_creator_id]));
     }
 
 

@@ -88,7 +88,7 @@ class SiteController extends Controller
 
     public function actionLeaderboard()
     {
-        $model = User::find()->where(['!=', 'role_id', 1])->all();
+        $model = User::find()->where(['!=', 'role_id', 1])->orderBy(['experience_count' => SORT_DESC])->all();
         return $this->render('leaderboard', [
             'model' => $model,
         ]);

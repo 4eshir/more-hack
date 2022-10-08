@@ -1,6 +1,8 @@
 <?php
 
 use app\models\Role;
+use app\models\Wallet;
+use app\models\CurrencyWallet;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -20,6 +22,12 @@ use yii\grid\GridView;
 
     .div-float{
         width: 35%;
+        float: left;
+    }
+
+    .div-last{
+        width: 25%;
+        margin-left: 1%;
         float: left;
     }
 
@@ -137,6 +145,41 @@ use yii\grid\GridView;
             echo '<span>Здесь пока ничего нет...</span>';
 
         ?>
+    </div>
+
+    <div class="div-last">
+        <div style="margin-bottom: 10px;">
+            <span class="header-text">Кошелек</span>
+        </div>
+        <?php
+        $wallet1 = Wallet::find()->where(['type_id' => 1])->andWhere(['user_id' => $model->user->id])->one();
+        $wallet2 = Wallet::find()->where(['type_id' => 2])->andWhere(['user_id' => $model->user->id])->one();
+
+        $currencyWallet11 = CurrencyWallet::find()->where(['wallet_id' => $wallet1->id])->andWhere(['currency_id' => 1])->one();
+        $currencyWallet12 = CurrencyWallet::find()->where(['wallet_id' => $wallet1->id])->andWhere(['currency_id' => 2])->one();
+
+        if ($wallet2 !== null)
+        {
+            $currencyWallet21 = CurrencyWallet::find()->where(['wallet_id' => $wallet2->id])->andWhere(['currency_id' => 1])->one();
+            $currencyWallet22 = CurrencyWallet::find()->where(['wallet_id' => $wallet2->id])->andWhere(['currency_id' => 2])->one();
+        }
+        ?>
+        <table class="table table-bordered">
+            <tr>
+                <td>Личный кошелек</td>
+                <td><?php echo $currencyWallet11->count.' NFT' ?></td>
+                <td><?php echo $currencyWallet12->count.' Rub' ?></td>
+            </tr>
+            <?php 
+            if ($wallet2 !== null) {
+            ?>
+                <tr>
+                    <td>Виртуальный кошелек</td>
+                    <td><?php echo $currencyWallet21->count.' NFT' ?></td>
+                    <td><?php echo $currencyWallet22->count.' Rub' ?></td>
+                </tr>
+            <?php } ?>
+        </table>
     </div>
 
 

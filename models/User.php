@@ -80,7 +80,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'id' => 'ID',
             'username' => 'Логин',
             'auth_key' => 'Auth Key',
-            'password_hash' => 'Password Hash',
+            'password_hash' => 'Пароль',
             'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
             'status' => 'Status',

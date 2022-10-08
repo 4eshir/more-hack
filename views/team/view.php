@@ -16,18 +16,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?php
-        if ($model->status_id == 2)
-            echo Html::a('Выплатить вознаграждение', ['pay', 'id' => $model->id], ['class' => 'btn btn-info']);
-        ?>
-        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?php if (Yii::$app->user->identity->getId() == $model->user_creator_id) { ?>
+            <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?php
+            if ($model->status_id == 2)
+                echo Html::a('Выплатить вознаграждение', ['pay', 'id' => $model->id], ['class' => 'btn btn-info']);
+            ?>
+            <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data' => [
+                    'confirm' => 'Are you sure you want to delete this item?',
+                    'method' => 'post',
+                ],
+            ]) ?>
+        <?php } ?>
         <?php
 
         $teamUsers = app\models\TeamUser::find()->where(['team_id' => $model->id])->all();
