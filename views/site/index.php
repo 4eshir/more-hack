@@ -6,25 +6,14 @@ $this->title = 'My Yii Application';
 ?>
 
 <style>
-/*    body {
-        font-family: 'Josefin Sans', sans-serif;
-        box-sizing: border-box;
-    }
-    .container-fluid{
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        background: #FFF;
-    }
-    !* ============= Animation background ========= *!*/
-    .background {
+
+    main {
         background: linear-gradient(132deg, #FC415A, #591BC5, #212335);
         background-size: 400% 400%;
         animation: Gradient 15s ease infinite;
         position: relative;
         height: 100vh;
-        width: 200%;
+        /*width: 200%;*/
         overflow: hidden;
         padding:0;
         margin:0px;
@@ -68,26 +57,7 @@ $this->title = 'My Yii Application';
         left: 50vw;
         top: 10vh;
     }
-    /* ================= Header ============ */
 
-/*    !* Header content & title & button*!
-    .content{
-        margin-top:25%;
-        text-align: center;
-        color:  #EFEEF5;
-    }
-    h1{
-        text-transform: uppercase;
-        font-size: 3em;
-        letter-spacing: 1px;
-    }
-    p {
-        font-size: 20px;
-        line-height: 1.5;
-        margin: 20px auto;
-    }*/
-
-    /* Animate Background*/
     @keyframes Gradient {
         0% {
             background-position: 0% 50%;
@@ -109,49 +79,48 @@ $this->title = 'My Yii Application';
             opacity: 0;
         }
     }
-/*
-    .fixed-top {
-        width: 100%;
-        margin: 0 auto;
-    }*/
 
-    main > .container {
-        padding: 0;
-        margin: 0;
-    }
 
     .navbar-brand {
         margin-left: 15%;
     }
 
-    .footer {
-        background-color: #343a40;
-        width: 100%;
-    }
-
     .semilayer {
         padding: 5px;
         background: #F5F5DC;
-        width: 80%;
+        width: 90%;
         opacity: 0.5;
         position: absolute;
-        height: 274px;
+        height: 375px;
         top: 30%;
-        margin-left: 30%;
+        color: black;
+        font-size: 20px;
+        font-weight: 700;
     }
 </style>
 
-<div class="site-index">
-    <div class="background">
+<div class="site-index background">
+<!--    <div class="background">-->
         <div class="cube"></div>
         <div class="cube"></div>
         <div class="cube"></div>
         <div class="cube"></div>
         <div class="cube"></div>
-    </div>
+<!--    </div>-->
     <div class="semilayer">
         <?php
-            
+            $user = \app\models\User::find()->where(['id' => Yii::$app->user->identity->getId()])->one();
+
+           echo 'Здравствуй '. $user->username.', ты находишься во внутрикорпоративной системе ВТБ. 
+<br>Великий Администратор выдал тебе роль «'.$user->role->name.'». Тебе доступно:
+<br>❑ Прохождение образовательных заданий;
+<br>❑ Участие в корпоративных проектах;
+<br>❑ Покупка на маркетплейсе;
+<br>❑ Продажа на маркетплейсе;
+<br>❑ Перевод nft и монет коллегам;
+<br>❑ Просмотр истории;
+<br>❑ Вывод валюты в цифровые рубли банка России.
+<br>А также возможность получить специальные достижения, ведь каждое действие в системе даёт очки опыта. Соревнуйтесь с коллегами за первые места в рейтинге и получайте удовольствие!';
         ?>
     </div>
 <!--<div class="container-fluid">

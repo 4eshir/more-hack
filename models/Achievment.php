@@ -409,10 +409,10 @@ class Achievment extends \yii\db\ActiveRecord
 
     public function Fast($user_id)        // забрать последний товар
     {
-        if ($this->TrophyNo($user_id, 19))
+        if ($this->TrophyNo($user_id, 20))
         {
             $reward = new AchievmentUser();
-            $reward->achievment_id = 19;
+            $reward->achievment_id = 20;
             $reward->user_id = $user_id;
             $reward->save();
             $reward->addExp();
@@ -421,10 +421,10 @@ class Achievment extends \yii\db\ActiveRecord
 
     public function Desperate($user_id)        // нехватает средств на покупку
     {
-        if ($this->TrophyNo($user_id, 20))
+        if ($this->TrophyNo($user_id, 19))
         {
             $reward = new AchievmentUser();
-            $reward->achievment_id = 20;
+            $reward->achievment_id = 19;
             $reward->user_id = $user_id;
             $reward->save();
             $reward->addExp();
