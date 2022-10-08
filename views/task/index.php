@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Task;
+use app\models\User;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -18,7 +19,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Создать проект обучения', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php
+        $user = User::find()->where(['id' => Yii::$app->user->identity->getId()])->one();
+        if ($user->role_id == 3) {
+        ?>
+            <?= Html::a('Создать проект обучения', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php } ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,11 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
             'currency_id',
             'price',
-            'repeat',
+            'repeatString',
             //'user_creator_id',
             //'status_id',
             //'date_start',

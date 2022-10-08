@@ -66,6 +66,7 @@ class APIConnector
             ->setContent('{"fromPrivateKey": "'.APIConnector::$mainWallet_private.'", "toPublicKey": "'.$publicKey.'", "amount": '.$amount.'}')
 
             ->send();
+
         }
         if ($type == 1)
         {
@@ -98,7 +99,7 @@ class APIConnector
             ->setContent('{"fromPrivateKey": "'.$privateKey_out.'", "toPublicKey": "'.$publicKey_in.'", "amount": '.$amount.'}')
 
             ->send();
-
+            
         }
         if ($type == 1)
         {

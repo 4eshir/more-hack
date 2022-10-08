@@ -74,10 +74,10 @@ use yii\jui\DatePicker;
 
     <?= $form->field($model, 'repeat')->checkbox() ?>
 
-    <?= $form->field($model, 'status_id')->checkbox() ?>
+    <?= $form->field($model, 'status_id')->checkbox()->label('Проект активен') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
