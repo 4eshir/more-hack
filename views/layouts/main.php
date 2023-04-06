@@ -33,7 +33,7 @@ AppAsset::register($this);
     if (Yii::$app->user->identity == null)
     {
         NavBar::begin([
-            'brandLabel' => 'ВТБ'/*Yii::$app->name*/,
+            'brandLabel' => 'РОСЭЛТОРГ Fun'/*Yii::$app->name*/,
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
@@ -51,7 +51,7 @@ AppAsset::register($this);
     else if ($user->role_id == 1)
     {
        NavBar::begin([
-            'brandLabel' => 'ВТБ'/*Yii::$app->name*/,
+            'brandLabel' => 'РОСЭЛТОРГ Fun'/*Yii::$app->name*/,
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
@@ -80,7 +80,7 @@ AppAsset::register($this);
     else
     {
        NavBar::begin([
-            'brandLabel' => 'ВТБ'/*Yii::$app->name*/,
+            'brandLabel' => 'РОСЭЛТОРГ Fun'/*Yii::$app->name*/,
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',

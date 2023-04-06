@@ -2,7 +2,7 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=u0457336_moretech',
+    'dsn' => 'mysql:host=localhost;dbname=rostorg',
     'username' => 'root',
     'password' => 'root',
     'charset' => 'utf8',
