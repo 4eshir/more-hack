@@ -14,15 +14,15 @@ use Yii;
 
 class APIConnector
 {
-    public static $baseUrl = "https://hackathon.lsp.team/hk";
+    public static $baseUrl = "";
 
-    public static $mainWallet_private = "3674389dbe7025d80ae7cafe5627cfc77102b9cd83edb957d5a054d1b09090e8";
-    public static $mainWallet_public = "0x42C21648C7a5BA528d49eACd0131934C69D11Ee1";
+    public static $mainWallet_private = "";
+    public static $mainWallet_public = "";
 
     public static function CreateWallet()
     {
         $client = new Client();
-        $response = $client->createRequest()
+        /*$response = $client->createRequest()
             ->setFormat(Client::FORMAT_JSON)
             ->setMethod('post')
             ->setUrl(APIConnector::$baseUrl.'/v1/wallets/new')
@@ -32,13 +32,15 @@ class APIConnector
             ->addHeaders(['X-Secret' => ''])
 
             ->send();
-
-        return [$response->data["publicKey"], $response->data["privateKey"]];
+        */
+        return 0;
+        //return [$response->data["publicKey"], $response->data["privateKey"]];
     }
 
     public static function AddMantic($amount, $publicKey)
     {
         $client = new Client();
+        /*
         $response = $client->createRequest()
             ->setFormat(Client::FORMAT_JSON)
             ->setMethod('post')
@@ -48,6 +50,7 @@ class APIConnector
             ->setContent('{"fromPrivateKey": "'.APIConnector::$mainWallet_private.'", "toPublicKey": "'.$publicKey.'", "amount": '.$amount.'}')
 
             ->send();
+        */
     }
 
     //type 2 - ruble, type 1 - nft
@@ -57,6 +60,7 @@ class APIConnector
 
         if ($type == 2)
         {
+            /*
             $response = $client->createRequest()
             ->setFormat(Client::FORMAT_JSON)
             ->setMethod('post')
@@ -66,10 +70,11 @@ class APIConnector
             ->setContent('{"fromPrivateKey": "'.APIConnector::$mainWallet_private.'", "toPublicKey": "'.$publicKey.'", "amount": '.$amount.'}')
 
             ->send();
-
+            */
         }
         if ($type == 1)
         {
+            /*
             $response = $client->createRequest()
                 ->setFormat(Client::FORMAT_JSON)
                 ->setMethod('post')
@@ -79,7 +84,7 @@ class APIConnector
                 ->setContent('{"toPublicKey": "'.$publicKey.'", "uri": "ipfs://bafybeifesqvvmmtcjlmeso3zaqh56mhttgza2eglw7zwy4ryuyifduy4i/images/star.png", "nftCount": '.$amount.'}')
 
                 ->send();
-
+            */
         }
     }
 
@@ -90,6 +95,7 @@ class APIConnector
 
         if ($type == 2)
         {
+            /*
             $response = $client->createRequest()
             ->setFormat(Client::FORMAT_JSON)
             ->setMethod('post')
@@ -99,10 +105,11 @@ class APIConnector
             ->setContent('{"fromPrivateKey": "'.$privateKey_out.'", "toPublicKey": "'.$publicKey_in.'", "amount": '.$amount.'}')
 
             ->send();
-            
+            */
         }
         if ($type == 1)
         {
+            /*
             $response1 = $client->createRequest()
                 ->setFormat(Client::FORMAT_JSON)
                 ->setMethod('get')
@@ -127,7 +134,7 @@ class APIConnector
             }
 
             
-
+            */
         }
     }
 }

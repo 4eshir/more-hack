@@ -90,8 +90,8 @@ AppAsset::register($this);
             'options' => ['class' => 'navbar-nav'],
             'items' => [
                 ['label' => 'Лидеры', 'url' => ['/site/leaderboard']],
-                ['label' => 'Командные задачи', 'url' => ['/team/index']],
-                ['label' => 'Проекты обучения', 'url' => ['/task/index']],
+                ['label' => 'Деловые игры', 'url' => ['/business-game/index']],
+                ['label' => 'Справочник онбординга', 'url' => ['/task/index']],
                 ['label' => 'Маркетплейс', 'url' => ['/product/market']],
                 Yii::$app->user->isGuest ? (
                 ['label' => 'Войти', 'url' => ['/site/login']]

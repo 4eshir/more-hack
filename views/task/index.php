@@ -11,7 +11,7 @@ use yii\grid\GridView;
 /** @var app\models\SearchTask $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Проекты обучения';
+$this->title = 'Справочник онбординга';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="task-index">
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         $user = User::find()->where(['id' => Yii::$app->user->identity->getId()])->one();
         if ($user->role_id == 3) {
         ?>
-            <?= Html::a('Создать проект обучения', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Создать ивент онбординга', ['create'], ['class' => 'btn btn-success']) ?>
         <?php } ?>
     </p>
 

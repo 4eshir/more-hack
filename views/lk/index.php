@@ -152,7 +152,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <label for="tab1" title="Вкладка 1">Общая информация</label>
  
     <input id="tab2" type="radio" name="tabs">
-    <label for="tab2" title="Вкладка 2">Задачи и команды</label>
+    <label for="tab2" title="Вкладка 2">Ивенты и игры</label>
  
     <input id="tab3" type="radio" name="tabs">
     <label for="tab3" title="Вкладка 3">Мои заказы</label>

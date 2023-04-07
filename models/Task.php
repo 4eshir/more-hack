@@ -56,20 +56,20 @@ class Task extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Название проекта',
+            'name' => 'Название ивента',
             'currency_id' => 'Валюта для выплаты участникам',
             'currencyString' => 'Валюта для выплаты участникам',
             'price' => 'Сумма вознаграждения',
             'repeat' => 'Возможность повторного выполнения',
             'repeatString' => 'Возможность повторного выполнения',
-            'user_creator_id' => 'Создатель проекта',
-            'creatorString' => 'Создатель проекта',
-            'status_id' => 'Статус проекта',
-            'statusString' => 'Статус проекта',
+            'user_creator_id' => 'Создатель ивента',
+            'creatorString' => 'Создатель ивента',
+            'status_id' => 'Статус ивента',
+            'statusString' => 'Статус ивента',
             'date_start' => 'Дата начала',
             'date_finish' => 'Дата окончания',
-            'joiners' => 'Выполняют задание',
-            'completed' => 'Выполнили задание',
+            'joiners' => 'Проходят ивент',
+            'completed' => 'Завершили ивент',
         ];
     }
 

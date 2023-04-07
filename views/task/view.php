@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /** @var app\models\Task $model */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Проекты обучения', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Ивенты онбординга', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -37,20 +37,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
         if (count($joins) == 0 || count($complete) == count($joins) && $f_check)
-            echo Html::a('Взять задачу на выполнение', ['join', 'id' => $model->id], ['class' => 'btn btn-success']);
+            echo Html::a('Участвовать в ивенте', ['join', 'id' => $model->id], ['class' => 'btn btn-success']);
         else if ((count($complete) == 0 || count($complete) < count($joins)) && $f_check)
         {
-            echo Html::a('Отказаться от выполнения', ['quit', 'id' => $model->id], ['class' => 'btn btn-warning']);
-            echo Html::a('Сдать выполненное задание', ['complete', 'id' => $model->id], ['class' => 'btn btn-success', 'style' => 'margin-left: 5px']);
+            echo Html::a('Выйти из ивента', ['quit', 'id' => $model->id], ['class' => 'btn btn-warning']);
+            echo Html::a('Завершить ивент', ['complete', 'id' => $model->id], ['class' => 'btn btn-success', 'style' => 'margin-left: 5px']);
         }
         else if (!$f_check)
         {
-            echo Html::a('Отказаться от выполнения', ['quit', 'id' => $model->id], ['class' => 'btn btn-warning']);
+            echo Html::a('Выйти из ивента', ['quit', 'id' => $model->id], ['class' => 'btn btn-warning']);
         }
         else if ($model->repeat == 1)
-            echo Html::a('Взять задачу на выполнение', ['join', 'id' => $model->id], ['class' => 'btn btn-success']);
+            echo Html::a('Участвовать в ивенте', ['join', 'id' => $model->id], ['class' => 'btn btn-success']);
         else
-            echo '<span style="color: red; margin-left: 10px">Вы уже выполнили это задание</span>';
+            echo '<span style="color: red; margin-left: 10px">Вы уже выполнили этот ивент</span>';
 
 
         ?>
@@ -75,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
     $join = app\models\TaskUser::find()->where(['task_id' => $model->id])->all();
     if (count($join) > 0)
     {
-        echo '<h5><u>Выполняют задание</u></h5>';
+        echo '<h5><u>В ивенте</u></h5>';
         echo DetailView::widget([
             'model' => $model,
             'attributes' => [
@@ -93,7 +93,7 @@ $this->params['breadcrumbs'][] = $this->title;
     $join = app\models\TaskUserConfirm::find()->joinWith(['taskUser taskUser'])->where(['taskUser.task_id' => $model->id])->all();
     if (count($join) > 0)
     {
-        echo '<h5><u>Выполнили задание</u></h5>';
+        echo '<h5><u>Выполнили ивент</u></h5>';
         echo DetailView::widget([
             'model' => $model,
             'attributes' => [

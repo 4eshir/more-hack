@@ -167,7 +167,7 @@ use yii\grid\GridView;
         <table class="table table-bordered">
             <tr>
                 <td>Личный кошелек</td>
-                <td><?php echo $currencyWallet11->count.' NFT' ?></td>
+                <td><?php echo $currencyWallet11->count.' IGC' ?></td>
                 <td><?php echo $currencyWallet12->count.' Rub' ?></td>
             </tr>
             <?php 
@@ -175,7 +175,7 @@ use yii\grid\GridView;
             ?>
                 <tr>
                     <td>Виртуальный кошелек</td>
-                    <td><?php echo $currencyWallet21->count.' NFT' ?></td>
+                    <td><?php echo $currencyWallet21->count.' IGC' ?></td>
                     <td><?php echo $currencyWallet22->count.' Rub' ?></td>
                 </tr>
             <?php } ?>

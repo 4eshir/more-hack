@@ -47,7 +47,7 @@ use yii\grid\GridView;
     <div class="container">
         <div class="div-float1">
             <div style="margin-bottom: 10px;">
-                <span class="header-text">Проекты обучения</span>
+                <span class="header-text">Ивенты онбординга</span>
             </div>
             <?php 
 
@@ -81,7 +81,7 @@ use yii\grid\GridView;
 
         <div class="div-float2">
             <div style="margin-bottom: 10px;">
-                <span class="header-text">Командные работы</span>
+                <span class="header-text">Деловые игры</span>
             </div>
             <?php 
 

@@ -34,7 +34,7 @@ class LkMoney extends \yii\base\Model
     public function attributeLabels()
     {
         return [
-            'count' => 'Кол-во NFT-сертификатов/монет',
+            'count' => 'Кол-во InGameCur/Rubles',
             'currency' => 'Тип валюты',
             'user_id' => 'Сотрудник',
         ];

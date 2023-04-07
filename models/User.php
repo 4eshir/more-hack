@@ -95,10 +95,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'walletVirtual' => 'Виртуальный кошелек',
             'personalSalary' => 'Ежемесячное пополнение личного кошелька',
             'virtualSalary' => 'Ежемесячное пополнение виртуального кошелька',
-            'personalSalaryNFT' => 'NFT-сертификаты',
-            'personalSalaryDig' => 'Digital Rubles',
-            'virtualSalaryNFT' => 'NFT-сертификаты',
-            'virtualSalaryDig' => 'Digital Rubles',
+            'personalSalaryNFT' => 'InGameCur',
+            'personalSalaryDig' => 'Rubles',
+            'virtualSalaryNFT' => 'InGameCur',
+            'virtualSalaryDig' => 'Rubles',
             'experience_count' => 'Очки опыта',
         ];
     }
