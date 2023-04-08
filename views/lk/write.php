@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php
     $role = \app\models\User::find()->all();
-    $items = \yii\helpers\ArrayHelper::map($role,'id','fullName');
+    $items = \yii\helpers\ArrayHelper::map($role,'id','fullNameWithRole');
     $params = [];
     echo $form->field($model, "user_id")->dropDownList($items,$params)->label('Кому');
     ?>

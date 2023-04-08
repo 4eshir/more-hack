@@ -251,6 +251,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $this->secondname.' '.$this->firstname.' ('.$this->username.')';
     }
 
+    public function getFullNameWithRole()
+    {
+        return $this->secondname.' '.$this->firstname.' ('.$this->username.' - '.$this->role->name.')';
+    }
+
 
     /**
      * @inheritdoc

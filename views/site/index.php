@@ -91,7 +91,7 @@ $this->title = 'My Yii Application';
         width: 90%;
         opacity: 0.5;
         position: absolute;
-        height: 375px;
+        height: auto;
         top: 30%;
         color: black;
         font-size: 20px;
@@ -112,17 +112,15 @@ $this->title = 'My Yii Application';
         if (Yii::$app->user->identity !== null)
         {
             $user = \app\models\User::find()->where(['id' => Yii::$app->user->identity->getId()])->one();
+            $roles = \app\models\RoleFunctionRole::find()->where(['role_id' => $user->role_id])->all();
+            $res = '';
+            foreach ($roles as $role)
+            {
+                $res .= '<br>❑'.$role->roleFunction->name;
+            }
 
-           echo 'Здравствуй '. $user->username.', ты находишься во внутрикорпоративной системе ВТБ. 
-<br>Великий Администратор выдал тебе роль «'.$user->role->name.'». Тебе доступно:
-<br>❑ Прохождение образовательных заданий;
-<br>❑ Участие в корпоративных проектах;
-<br>❑ Покупка на маркетплейсе;
-<br>❑ Продажа на маркетплейсе;
-<br>❑ Перевод nft и монет коллегам;
-<br>❑ Просмотр истории;
-<br>❑ Вывод валюты в цифровые рубли банка России.
-<br>А также возможность получить специальные достижения, ведь каждое действие в системе даёт очки опыта. 
+           echo 'Здравствуй '. $user->username.', ты находишься в системе РОСЭЛТОРГ Fun. 
+<br>Твоя роль: «'.$user->role->name.'». Тебе доступно:'.$res.'<br>А также возможность получить специальные достижения, ведь каждое действие в системе даёт очки опыта. 
 <br>Соревнуйтесь с коллегами за первые места в рейтинге и получайте удовольствие!';
         }
         else
