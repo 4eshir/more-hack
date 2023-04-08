@@ -151,7 +151,7 @@ class Task extends \yii\db\ActiveRecord
         {
             $user =  User::find()->where(['id' => Yii::$app->user->identity->getId()])->one();
             $str = $one->confirm == 0 ? '<span style="color: red"><i>(не подтверждено)</i></span>' : '<span style="color: green"><i>(подтверждено)</i></span>';
-            if ($user->role_id == 3 && $one->confirm == 0)
+            if ($user->role_id == 1 && $one->confirm == 0)
                 $str .= '<a class="btn btn-success" href="/index.php?r=task/confirm&id='.$one->id.'" style="margin-left: 10px">Подтвердить</a>';
             $res .= Html::a($one->taskUser->user->secondname.' '.$one->taskUser->user->firstname.' ('.$one->taskUser->user->username.')', ['user/view', 'id' => $one->taskUser->user_id]).' '.$str.'<br>';
         }

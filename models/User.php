@@ -403,7 +403,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         $salary = UserSalary::find()->where(['user_id' => $this->id])->all();
         $wallets = Wallet::find()->where(['user_id' => $this->id])->all();
         $currencyWallet = CurrencyWallet::find()->joinWith(['wallet wallet'])->where(['wallet.user_id' => $this->id])->all();
-        foreach ($currencyWallet as $one) $one->delete();
+
+        //foreach ($currencyWallet as $one) $one->delete();
         foreach ($salary as $one) $one->delete();
         foreach ($wallets as $one) $one->delete();
 
@@ -556,11 +557,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         {
             $wallets = Wallet::find()->where(['user_id' => $this->id])->all();
             $currencyWallet = CurrencyWallet::find()->joinWith(['wallet wallet'])->where(['wallet.user_id' => $this->id])->all();
-            foreach ($currencyWallet as $one) $one->delete();
-            foreach ($wallets as $one) $one->delete();
+            //foreach ($currencyWallet as $one) $one->delete();
+            //foreach ($wallets as $one) $one->delete();
 
             $salary = UserSalary::find()->where(['user_id' => $this->id])->all();
-            foreach ($salary as $one) $one->delete();
+            //foreach ($salary as $one) $one->delete();
         }
 
 
