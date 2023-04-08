@@ -10,10 +10,15 @@ use Yii;
  * @property int $id
  * @property string $start_date
  * @property string $end_date
- * @property int $price
- * @property int $creator_id
+ * @property int $type_participation_id
+ * @property string $name
+ * @property string $description
+ * @property int $role_participant_id
+ * @property int $type_participant_id
+ * @property string $target
+ * @property int $count_participant
  *
- * @property User $creator
+ * @property Step[] $steps
  */
 class BusinessGame extends \yii\db\ActiveRecord
 {
@@ -31,10 +36,10 @@ class BusinessGame extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['start_date', 'end_date', 'price', 'creator_id'], 'required'],
+            [['start_date', 'end_date', 'type_participation_id', 'name', 'description', 'role_participant_id', 'type_participant_id', 'target', 'count_participant'], 'required'],
             [['start_date', 'end_date'], 'safe'],
-            [['price', 'creator_id'], 'integer'],
-            [['creator_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['creator_id' => 'id']],
+            [['type_participation_id', 'role_participant_id', 'type_participant_id', 'count_participant'], 'integer'],
+            [['name', 'description', 'target'], 'string', 'max' => 1000],
         ];
     }
 
@@ -47,18 +52,23 @@ class BusinessGame extends \yii\db\ActiveRecord
             'id' => 'ID',
             'start_date' => 'Start Date',
             'end_date' => 'End Date',
-            'price' => 'Price',
-            'creator_id' => 'Creator ID',
+            'type_participation_id' => 'Type Participation ID',
+            'name' => 'Name',
+            'description' => 'Description',
+            'role_participant_id' => 'Role Participant ID',
+            'type_participant_id' => 'Type Participant ID',
+            'target' => 'Target',
+            'count_participant' => 'Count Participant',
         ];
     }
 
     /**
-     * Gets query for [[Creator]].
+     * Gets query for [[Steps]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCreator()
+    public function getSteps()
     {
-        return $this->hasOne(User::class, ['id' => 'creator_id']);
+        return $this->hasMany(Step::class, ['business_game_id' => 'id']);
     }
 }

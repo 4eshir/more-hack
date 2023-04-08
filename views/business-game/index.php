@@ -29,8 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'start_date',
             'end_date',
-            'price',
-            'creator_id',
+            'type_participation_id',
+            'name',
+            //'description',
+            //'role_participant_id',
+            //'type_participant_id',
+            //'target',
+            //'count_participant',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, BusinessGame $model, $key, $index, $column) {

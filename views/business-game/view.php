@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var app\models\BusinessGame $model */
 
-$this->title = $model->id;
+$this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Business Games', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -32,8 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'start_date',
             'end_date',
-            'price',
-            'creator_id',
+            'type_participation_id',
+            'name',
+            'description',
+            'role_participant_id',
+            'type_participant_id',
+            'target',
+            'count_participant',
         ],
     ]) ?>
 
