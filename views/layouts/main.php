@@ -62,7 +62,10 @@ AppAsset::register($this);
             'items' => [
                 ['label' => 'Лидеры', 'url' => ['/site/leaderboard']],
                 ['label' => 'Пользователи', 'url' => ['/user/index']],
+                ['label' => 'Деловые игры', 'url' => ['/business-game/index']],
+                ['label' => 'Справочник онбординга', 'url' => ['/task/index']],
                 ['label' => 'Маркетплейс', 'url' => ['/product/market']],
+                ['label' => 'FAQ', 'url' => ['/faq/index']],
                 Yii::$app->user->isGuest ? (
                 ['label' => 'Войти', 'url' => ['/site/login']]
                 ) : (
@@ -93,6 +96,7 @@ AppAsset::register($this);
                 ['label' => 'Деловые игры', 'url' => ['/business-game/index']],
                 ['label' => 'Справочник онбординга', 'url' => ['/task/index']],
                 ['label' => 'Маркетплейс', 'url' => ['/product/market']],
+                ['label' => 'FAQ', 'url' => ['/faq/index']],
                 Yii::$app->user->isGuest ? (
                 ['label' => 'Войти', 'url' => ['/site/login']]
                 ) : (

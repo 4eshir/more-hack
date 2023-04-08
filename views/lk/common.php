@@ -121,6 +121,14 @@ use yii\grid\GridView;
                 <td><b>Логин</b></td>
                 <td><?php echo $model->user->username; ?></td>
             </tr>
+            <tr style="width: 70%">
+                <td><b>Тип организации</b></td>
+                <td><?php echo $model->user->typeOrg->name; ?></td>
+            </tr>
+            <tr style="width: 70%">
+                <td><b>Роль в системе</b></td>
+                <td><?php echo $model->user->role->name; ?></td>
+            </tr>
         </table>
     </div>
     

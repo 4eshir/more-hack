@@ -19,24 +19,32 @@ use yii\web\IdentityInterface;
  * @property string $username
  * @property string $auth_key
  * @property string $password_hash
- * @property string $password_reset_token
+ * @property string|null $password_reset_token
  * @property string|null $email
  * @property int $status
- * @property int $created_at
- * @property int $updated_at
+ * @property int|null $created_at
+ * @property int|null $updated_at
  * @property string $firstname
  * @property string $secondname
  * @property string|null $patronymic
  * @property int|null $role_id
+ * @property int $experience_count
+ * @property int $type_org_id
  *
  * @property AchievmentUser[] $achievmentUsers
+ * @property BusinessGame[] $businessGames
+ * @property Chat[] $chats
+ * @property Chat[] $chats0
  * @property ProductUser[] $productUsers
  * @property Product[] $products
  * @property Role $role
+ * @property TaskUserConfirm[] $taskUserConfirms
  * @property TaskUser[] $taskUsers
  * @property Task[] $tasks
  * @property TeamUser[] $teamUsers
  * @property Team[] $teams
+ * @property TypeOrg $typeOrg
+ * @property UserSalary[] $userSalaries
  * @property Wallet[] $wallets
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
@@ -295,6 +303,16 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function getRoleString()
     {
         return $this->role->name;
+    }
+
+    /**
+     * Gets query for [[TypeOrg]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTypeOrg()
+    {
+        return $this->hasOne(TypeOrg::class, ['id' => 'type_org_id']);
     }
 
     public function getLevelNumber()
