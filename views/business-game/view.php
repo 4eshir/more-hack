@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /** @var app\models\BusinessGame $model */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Business Games', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Деловые игры', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,14 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?php
+        $opt = $model->id == 1 ? ['gameup', 'id' => $model->id] : ['gamedown', 'id' => $model->id];
+        ?>
+        <?= Html::a('Начать игру', $opt, ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -32,13 +28,18 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'start_date',
             'end_date',
-            'type_participation_id',
             'name',
             'description',
-            'role_participant_id',
-            'type_participant_id',
             'target',
             'count_participant',
+        ],
+    ]) ?>
+
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            //'id',
+            ['attribute' => 'stepsString', 'format' => 'raw'],
         ],
     ]) ?>
 

@@ -6,6 +6,10 @@ use app\models\TeamUser;
 use app\models\TaskUser;
 use app\models\Task;
 
+use app\models\StepUser;
+use app\models\BusinessGame;
+
+
 use Yii;
 
 class LkTaskTeam extends \yii\base\Model
@@ -27,7 +31,13 @@ class LkTaskTeam extends \yii\base\Model
 
     public function fill($id)
     {
-        $this->teams = TeamUser::find()->where(['user_id' => $id])->all();
+        $steps = StepUser::find()->where(['user_id' => $id])->all();
+        $sId = [];
+        foreach ($steps as $step)
+            $sId[] = $step->step->business_game_id;
+
+
+        $this->teams = BusinessGame::find()->where(['IN', 'id', $sId])->all();
         $tasks = TaskUser::find()->where(['user_id' => $id])->all();
         $tIds = [];
         foreach ($tasks as $task) $tIds[] = $task->task_id;

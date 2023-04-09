@@ -3,10 +3,13 @@
 namespace app\controllers;
 
 use app\models\BusinessGame;
+use app\models\StepUser;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
+use Yii;
 
 /**
  * BusinessGameController implements the CRUD actions for BusinessGame model.
@@ -124,6 +127,92 @@ class BusinessGameController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionGameup()
+    {
+        $model = BusinessGame::find()->where(['id' => 1])->one();
+        return $this->render('gameup', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionGamedown()
+    {
+        $model = BusinessGame::find()->where(['id' => 2])->one();
+        return $this->render('gamedown', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionResult($s1, $s2)
+    {
+        $step = new StepUser();
+        $step->user_id = Yii::$app->user->identity->getId();
+        $step->step_id = 1;
+        $step->end_key = 1;
+        $step->log = 'Ознакомился с лотом';
+        $step->save();
+
+        $step = new StepUser();
+        $step->user_id = Yii::$app->user->identity->getId();
+        $step->step_id = 2;
+        $step->end_key = $s1;
+        $step->log = 'Сделал ставку';
+        $step->save();
+
+        $step = new StepUser();
+        $step->user_id = Yii::$app->user->identity->getId();
+        $step->step_id = 3;
+        $step->end_key = $s2;
+        $step->log = 'Сделал ставку';
+        $step->save();
+
+        $step = new StepUser();
+        $step->user_id = Yii::$app->user->identity->getId();
+        $step->step_id = 4;
+        $step->end_key = $s1 + $s2 == 2 ? 1 : 0;
+        $step->log = 'Завершил игру';
+        $step->save();
+
+        return $this->render('view', [
+            'model' => $this->findModel(1),
+        ]);
+    }
+
+    public function actionResult2($s1, $s2)
+    {
+        $step = new StepUser();
+        $step->user_id = Yii::$app->user->identity->getId();
+        $step->step_id = 5;
+        $step->end_key = 1;
+        $step->log = 'Ознакомился с тендером';
+        $step->save();
+
+        $step = new StepUser();
+        $step->user_id = Yii::$app->user->identity->getId();
+        $step->step_id = 6;
+        $step->end_key = $s1;
+        $step->log = 'Изменил сумму';
+        $step->save();
+
+        $step = new StepUser();
+        $step->user_id = Yii::$app->user->identity->getId();
+        $step->step_id = 7;
+        $step->end_key = $s2;
+        $step->log = 'Изменил сумму';
+        $step->save();
+
+        $step = new StepUser();
+        $step->user_id = Yii::$app->user->identity->getId();
+        $step->step_id = 8;
+        $step->end_key = $s1 + $s2 == 2 ? 1 : 0;
+        $step->log = 'Завершил игру';
+        $step->save();
+
+        return $this->render('view', [
+            'model' => $this->findModel(2),
+        ]);
     }
 
     /**

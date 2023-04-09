@@ -59,6 +59,7 @@ class BusinessGame extends \yii\db\ActiveRecord
             'type_participant_id' => 'Тип участия',
             'target' => 'Цель',
             'count_participant' => 'Количество участников',
+            'stepsString' => 'Этапы игры',
         ];
     }
 
@@ -70,5 +71,18 @@ class BusinessGame extends \yii\db\ActiveRecord
     public function getSteps()
     {
         return $this->hasMany(Step::class, ['business_game_id' => 'id']);
+    }
+
+    public function getStepsString()
+    {
+        $steps = Step::find()->where(['business_game_id' => $this->id])->all();
+        $res = '';
+        $c = 1;
+        foreach ($steps as $step)
+        {
+            $res .= $c.'. '.$step->name.'<br>';
+            $c++;
+        }
+        return $res;
     }
 }

@@ -90,8 +90,8 @@ use yii\grid\GridView;
                 echo '<table class="table table-striped">';
                 foreach ($model->teams as $team)
                 {
-                    $strfinish = $team->team->status_id == 2 ? '<span style="color:red">Работа завершена</span>' : '<span style="color:green">Выполняется</span>';
-                    echo '<tr><td>'.Html::a($team->team->name, ['team/view', 'id' => $team->team_id]).'</td><td>'.explode(" ", $team->team->date_start)[0].' &mdash; '.explode(" ", $team->team->date_finish)[0].'</td><td>'.$strfinish.'</td></tr>';
+                    $strfinish = '<span style="color:green">Игра завершена</span>';
+                    echo '<tr><td>'.Html::a($team->name, ['business-game/view', 'id' => $team->id]).'</td><td>'.explode(" ", $team->start_date)[0].' &mdash; '.explode(" ", $team->end_date)[0].'</td><td>'.$strfinish.'</td></tr>';
                 }
                 echo '</table>';
             }
