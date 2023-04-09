@@ -50,15 +50,15 @@ class BusinessGame extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'start_date' => 'Start Date',
-            'end_date' => 'End Date',
-            'type_participation_id' => 'Type Participation ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'role_participant_id' => 'Role Participant ID',
-            'type_participant_id' => 'Type Participant ID',
-            'target' => 'Target',
-            'count_participant' => 'Count Participant',
+            'start_date' => 'Дата начала',
+            'end_date' => 'Дата окончания',
+            'type_participation_id' => 'Идентификатор участия',
+            'name' => 'Название',
+            'description' => 'Описание',
+            'role_participant_id' => 'Роль игрока',
+            'type_participant_id' => 'Тип участия',
+            'target' => 'Цель',
+            'count_participant' => 'Количество участников',
         ];
     }
 
