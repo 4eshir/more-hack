@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\BusinessGame $model */
 
-$this->title = 'Create Business Game';
-$this->params['breadcrumbs'][] = ['label' => 'Business Games', 'url' => ['index']];
+$this->title = 'Создать деловую игру';
+$this->params['breadcrumbs'][] = ['label' => 'Деловые игры', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="business-game-create">

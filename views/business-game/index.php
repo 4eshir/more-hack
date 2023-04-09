@@ -9,7 +9,7 @@ use yii\grid\GridView;
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Business Games';
+$this->title = 'Деловые игры';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="business-game-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Business Game', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
@@ -25,12 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            'name',
+            //'id',
             'start_date',
             'end_date',
-            'type_participation_id',
-            'name',
+            //'type_participation_id',
             //'description',
             //'role_participant_id',
             //'type_participant_id',
